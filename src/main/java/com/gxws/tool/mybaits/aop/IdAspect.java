@@ -30,12 +30,16 @@ public class IdAspect {
 		methodNameSetter.append(fieldName.substring(1));
 		Method method = null;
 		try {
-			method = entity.getClass().getMethod(methodNameSetter.toString(),
-					String.class);
+			try {
+				method = entity.getClass().getMethod(
+						methodNameSetter.toString(), String.class);
+			} catch (NoSuchMethodException e1) {
+				log.debug("没有id属性");
+				return;
+			}
 			method.invoke(entity, idValue());
-		} catch (NoSuchMethodException | SecurityException
-				| IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
+		} catch (SecurityException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException e) {
 			log.error("主键值修改错误", e);
 		}
 	}

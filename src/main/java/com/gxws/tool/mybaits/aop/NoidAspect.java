@@ -25,6 +25,7 @@ public class NoidAspect {
 						String.class);
 			} catch (NoSuchMethodException e1) {
 				log.debug("没有noid属性");
+				return;
 			}
 			Method noidGetterMethod = mapper.getClass().getMethod("noid",
 					new Class<?>[0]);
