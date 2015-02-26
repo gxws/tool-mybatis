@@ -19,7 +19,8 @@ import org.apache.ibatis.scripting.xmltags.MixedSqlNode;
 import org.apache.ibatis.scripting.xmltags.SqlNode;
 import org.apache.ibatis.scripting.xmltags.StaticTextSqlNode;
 import org.apache.ibatis.scripting.xmltags.TrimSqlNode;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gxws.tool.mybaits.entity.Entity;
 import com.gxws.tool.mybaits.entity.PkField;
@@ -31,7 +32,7 @@ import com.gxws.tool.mybaits.entity.PkField;
  */
 public class MapperProvider {
 
-	private Logger log = Logger.getLogger(getClass());
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	private static Map<String, Method> providerMethodMap = new HashMap<>();
 

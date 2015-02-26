@@ -4,8 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gxws.tool.mybaits.entity.PkField;
 
@@ -18,7 +19,7 @@ import com.gxws.tool.mybaits.entity.PkField;
  */
 public class IdAspect {
 
-	private Logger log = Logger.getLogger(getClass());
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	private PkField pk = new PkField();
 

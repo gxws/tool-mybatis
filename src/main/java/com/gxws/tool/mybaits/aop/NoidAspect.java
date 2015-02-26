@@ -3,8 +3,9 @@ package com.gxws.tool.mybaits.aop;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author 朱伟亮
@@ -13,7 +14,7 @@ import org.aspectj.lang.JoinPoint;
  */
 public class NoidAspect {
 
-	private Logger log = Logger.getLogger(getClass());
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	public void before(JoinPoint jp) {
 		Object mapper = jp.getTarget();
