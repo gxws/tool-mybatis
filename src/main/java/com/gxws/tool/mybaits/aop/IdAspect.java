@@ -2,12 +2,12 @@ package com.gxws.tool.mybaits.aop;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.UUID;
 
 import org.aspectj.lang.JoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gxws.tool.common.uuid.Uuid;
 import com.gxws.tool.mybaits.entity.PkField;
 
 /**
@@ -38,21 +38,10 @@ public class IdAspect {
 				log.debug("没有id属性");
 				return;
 			}
-			method.invoke(entity, idValue());
+			method.invoke(entity, Uuid.order());
 		} catch (SecurityException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException e) {
 			log.error("主键值修改错误", e);
 		}
-	}
-
-	private final String idValue() {
-		String value = UUID.randomUUID().toString();
-		StringBuffer sb = new StringBuffer(value.substring(0, 8));
-		sb.append(value.substring(9, 13));
-		sb.append(value.substring(14, 18));
-		sb.append(value.substring(19, 23));
-		sb.append(value.substring(24));
-		value = sb.toString();
-		return value;
 	}
 }
