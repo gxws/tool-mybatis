@@ -70,11 +70,9 @@ public class MapperProvider {
 	public void handle(MappedStatement ms) {
 		Entity en = getEntity(ms.getId());
 		if (!en.isSubMapper()) {
-			log.debug("不是继承子类");
 			return;
 		}
 		if (!providerMethodMap.containsKey(en.getMapperMethodName())) {
-			log.debug("没有对应的方法");
 			return;
 		}
 		Method method = providerMethodMap.get(en.getMapperMethodName());
@@ -135,8 +133,6 @@ public class MapperProvider {
 
 	public void noid(MappedStatement ms, Entity en) {
 		List<SqlNode> nodes = new ArrayList<>();
-//		nodes.add(new StaticTextSqlNode("select noid.get_noid('"
-//				+ en.getDbTableName() + "')"));
 		nodes.add(new StaticTextSqlNode("select noid.get_noid('"
 				+ en.getDbTableName() + "')"));
 		DynamicSqlSource sqlSource = new DynamicSqlSource(
