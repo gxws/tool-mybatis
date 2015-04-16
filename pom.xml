@@ -3,14 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gxws</groupId>
-		<artifactId>top-config-project-spring</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>top-config-project</artifactId>
+		<version>1.0.0</version>
 	</parent>
 	<groupId>com.gxws</groupId>
 	<artifactId>tool-mybatis</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<properties>
 		<version.mybatis>3.2.7</version.mybatis>
+		<version.tool.common>1.0.0</version.tool.common>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -19,6 +20,12 @@
 				<artifactId>mybatis</artifactId>
 				<version>${version.mybatis}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.gxws</groupId>
+				<artifactId>tool-common</artifactId>
+				<version>${version.tool.common}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -26,6 +33,11 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.gxws</groupId>
+			<artifactId>tool-common</artifactId>
 		</dependency>
 	</dependencies>
 </project>
