@@ -1,8 +1,8 @@
 package com.gxws.tool.mybaits.entity;
 
 /**
- * @author 朱伟亮
- * @create 2015年2月5日下午1:44:04
+ * @author zhuwl120820@gxwsxx.com
+ *  2015年2月5日下午1:44:04
  *
  */
 public class PkField {

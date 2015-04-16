@@ -15,8 +15,8 @@ import org.apache.ibatis.session.RowBounds;
 import com.gxws.tool.mybaits.mapper.MapperProvider;
 
 /**
- * @author 朱伟亮
- * @create 2015年2月2日下午2:17:23
+ * @author zhuwl120820@gxwsxx.com
+ *  2015年2月2日下午2:17:23
  *
  */
 @Intercepts({

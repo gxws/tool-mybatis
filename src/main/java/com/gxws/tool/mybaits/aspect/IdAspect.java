@@ -13,8 +13,8 @@ import com.gxws.tool.mybaits.entity.PkField;
 /**
  * 设置主键的值
  * 
- * @author 朱伟亮
- * @create 2015年2月5日下午3:13:17
+ * @author zhuwl120820@gxwsxx.com
+ *  2015年2月5日下午3:13:17
  *
  */
 public class IdAspect {

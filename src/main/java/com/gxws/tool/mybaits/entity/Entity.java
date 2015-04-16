@@ -9,8 +9,8 @@ import java.util.Set;
 /**
  * 需要处理的泛型实体类信息
  * 
- * @author 朱伟亮
- * @create 2015年2月3日下午2:44:40
+ * @author zhuwl120820@gxwsxx.com
+ *  2015年2月3日下午2:44:40
  *
  */
 public class Entity {

@@ -24,8 +24,8 @@ import com.gxws.tool.mybaits.entity.Entity;
 import com.gxws.tool.mybaits.entity.PkField;
 
 /**
- * @author 朱伟亮
- * @create 2015年2月2日下午11:00:04
+ * @author zhuwl120820@gxwsxx.com
+ *  2015年2月2日下午11:00:04
  *
  */
 public class MapperProvider {
@@ -39,8 +39,8 @@ public class MapperProvider {
 	/**
 	 * 初始化所有参数
 	 * 
-	 * @author 朱伟亮
-	 * @create 2015年2月5日下午2:20:11
+	 * @author zhuwl120820@gxwsxx.com
+	 *  2015年2月5日下午2:20:11
 	 *
 	 */
 	public MapperProvider() {
@@ -58,8 +58,8 @@ public class MapperProvider {
 	/**
 	 * 根据java反射提供对应方法的具体实现
 	 * 
-	 * @author 朱伟亮
-	 * @create 2015年2月5日下午2:20:31
+	 * @author zhuwl120820@gxwsxx.com
+	 *  2015年2月5日下午2:20:31
 	 * 
 	 * @param ms
 	 */
@@ -83,8 +83,8 @@ public class MapperProvider {
 	/**
 	 * 对mybatis的内置变量进行重新赋值
 	 * 
-	 * @author 朱伟亮
-	 * @create 2015年2月5日下午2:21:23
+	 * @author zhuwl120820@gxwsxx.com
+	 *  2015年2月5日下午2:21:23
 	 * 
 	 * @param obj
 	 * @param name
@@ -99,8 +99,8 @@ public class MapperProvider {
 	/**
 	 * 获取所有实体类对象的参数
 	 * 
-	 * @author 朱伟亮
-	 * @create 2015年2月5日下午2:22:52
+	 * @author zhuwl120820@gxwsxx.com
+	 *  2015年2月5日下午2:22:52
 	 * 
 	 * @param methodFullName
 	 * @return
