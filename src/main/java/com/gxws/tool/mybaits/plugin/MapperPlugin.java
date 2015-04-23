@@ -15,7 +15,10 @@ import org.apache.ibatis.session.RowBounds;
 import com.gxws.tool.mybaits.mapper.MapperProvider;
 
 /**
- * @author zhuwl120820@gxwsxx.com 2015年2月2日下午2:17:23
+ * mybatis plugin，实现泛型增删改查的方法<br>
+ * 具体使用方式参考mybatis官方文档
+ * 
+ * @author zhuwl120820@gxwsxx.com
  *
  */
 @Intercepts({

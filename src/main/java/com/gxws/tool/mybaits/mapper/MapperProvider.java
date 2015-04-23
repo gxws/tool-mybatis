@@ -26,6 +26,7 @@ import com.gxws.tool.mybaits.entity.PkField;
 /**
  * @author zhuwl120820@gxwsxx.com 2015年2月2日下午11:00:04
  *
+ *         mapper接口的实际实现类
  */
 public class MapperProvider {
 
@@ -37,9 +38,6 @@ public class MapperProvider {
 
 	/**
 	 * 初始化所有参数
-	 * 
-	 * @author zhuwl120820@gxwsxx.com 2015年2月5日下午2:20:11
-	 *
 	 */
 	public MapperProvider() {
 		Class<? extends MapperProvider> clz = this.getClass();
@@ -49,6 +47,12 @@ public class MapperProvider {
 		}
 	}
 
+	/**
+	 * mybatis指定实现对象，没有实际意义
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @return 返回没有实际意义的sql语句
+	 */
 	public String fakeSQL() {
 		return "fakeSQL";
 	}
@@ -84,8 +88,12 @@ public class MapperProvider {
 	 * @author zhuwl120820@gxwsxx.com 2015年2月5日下午2:21:23
 	 * 
 	 * @param obj
+	 *            mybatis的MappedStatement对象
 	 * @param name
+	 *            内置参数名，一般是"type"或"sqlSource"
 	 * @param value
+	 *            内置参数值，一般是class对象或sqlSource对象
+	 * 
 	 */
 	private void resetValue(Object obj, String name, Object value) {
 		MetaObject mo = MetaObject.forObject(obj, new DefaultObjectFactory(),
@@ -99,7 +107,7 @@ public class MapperProvider {
 	 * @author zhuwl120820@gxwsxx.com 2015年2月5日下午2:22:52
 	 * 
 	 * @param methodFullName
-	 * @return
+	 * @return 参数对象
 	 */
 	private Entity getEntity(String methodFullName) {
 		Entity en = enMap.get(methodFullName);
@@ -125,8 +133,9 @@ public class MapperProvider {
 
 	public void noid(MappedStatement ms, Entity en) {
 		List<SqlNode> nodes = new ArrayList<>();
-		nodes.add(new StaticTextSqlNode("select noid.get_noid('"
-				+ en.getDbTableName() + "')"));
+		nodes.add(new StaticTextSqlNode(
+				"select noid.get_noid(concat((select database()),'."
+						+ en.getDbTableName() + "'))"));
 		DynamicSqlSource sqlSource = new DynamicSqlSource(
 				ms.getConfiguration(), new MixedSqlNode(nodes));
 		resetValue(ms, "sqlSource", sqlSource);

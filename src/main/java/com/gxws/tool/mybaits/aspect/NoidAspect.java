@@ -8,14 +8,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author zhuwl120820@gxwsxx.com
- *  2015年2月5日下午3:13:01
+ * 设置noid的值
+ * 
+ * @author zhuwl120820@gxwsxx.com 2015年2月5日下午3:13:01
  *
  */
 public class NoidAspect {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
 
+	/**
+	 * 在insert方法执行之前插入noid的值
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @param jp
+	 *            JoinPoint对象
+	 */
 	public void before(JoinPoint jp) {
 		Object mapper = jp.getTarget();
 		Object entity = jp.getArgs()[0];

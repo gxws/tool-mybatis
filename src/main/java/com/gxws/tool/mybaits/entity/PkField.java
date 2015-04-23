@@ -1,13 +1,16 @@
 package com.gxws.tool.mybaits.entity;
 
 /**
+ * 需要处理的主键信息
+ * 
  * @author zhuwl120820@gxwsxx.com
- *  2015年2月5日下午1:44:04
  *
  */
 public class PkField {
 
+	// 数据库列名
 	private String dbColumnName;
+	// 实体类字段名
 	private String entityField;
 
 	public PkField() {

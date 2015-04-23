@@ -13,8 +13,7 @@ import com.gxws.tool.mybaits.entity.PkField;
 /**
  * 设置主键的值
  * 
- * @author zhuwl120820@gxwsxx.com
- *  2015年2月5日下午3:13:17
+ * @author zhuwl120820@gxwsxx.com 2015年2月5日下午3:13:17
  *
  */
 public class IdAspect {
@@ -23,6 +22,13 @@ public class IdAspect {
 
 	private PkField pk = new PkField();
 
+	/**
+	 * 在insert方法执行之前插入id的值
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @param jp
+	 *            JoinPoint对象
+	 */
 	public void before(JoinPoint jp) {
 		Object entity = jp.getArgs()[0];
 		String fieldName = pk.getEntityField();
