@@ -18,7 +18,6 @@
 				<artifactId>mybatis</artifactId>
 				<version>${version.mybatis}</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -26,6 +25,23 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.slf4j}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>apache-log4j-extras</artifactId>
+			<version>1.2.17</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

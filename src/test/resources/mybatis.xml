@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="defaultStatementTimeout" value="30" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<typeAliases>
+		<package name="java.lang" />
+		<package name="com.gxws.tool.mybatis.test.tb" />
+	</typeAliases>
+
+	<plugins>
+		<plugin interceptor="com.gxws.tool.mybaits.plugin.MapperPlugin"></plugin>
+	</plugins>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+				<property name="..." value="..." />
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://dev.mysql.gxwsxx.com/service_demo?useUnicode=true;characterEncoding=UTF-8" />
+				<property name="username" value="service_demo" />
+				<property name="password" value="service_demo" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="com/gxws/tool/mybaits/test/mapper/TestTbMapper.xml" />
+	</mappers>
+</configuration>

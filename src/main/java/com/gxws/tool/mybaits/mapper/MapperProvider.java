@@ -215,7 +215,7 @@ public class MapperProvider {
 				continue;
 			} else {
 				ifNodes.add(new IfSqlNode(new StaticTextSqlNode(Entity
-						.underline(fieldName) + "=#{" + fieldName + "}"),
+						.underline(fieldName) + "=#{" + fieldName + "}" + ","),
 						fieldName + "!=null"));
 			}
 		}
