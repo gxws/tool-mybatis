@@ -35,6 +35,6 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="com/gxws/tool/mybatis/test/mapper/TestTbMapper.xml" />
+		<mapper resource="TestTbMapper.xml" />
 	</mappers>
 </configuration>
