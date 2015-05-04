@@ -25,7 +25,7 @@ mybatis工具提供通用增删改查方法。<br>
 ---
 ### 1、提供通用的、泛型的增删改查方法
 
-	com.gxws.tool.mybaits.mapper.Mapper
+	com.gxws.tool.mybatis.mapper.Mapper
 	
 继承自Mapper<T>接口的接口，不需要再实现以下方法
 
@@ -64,16 +64,16 @@ org.mybatis mybatis 3.2.7<br>
 
 	<configuration>
 		<plugins>
-			<plugin interceptor="com.gxws.tool.mybaits.plugin.MapperPlugin"></plugin>
+			<plugin interceptor="com.gxws.tool.mybatis.plugin.MapperPlugin"></plugin>
 		</plugins>
 	</configuration>
 
-mapper接口继承com.gxws.tool.mybaits.mapper.Mapper。
+mapper接口继承com.gxws.tool.mybatis.mapper.Mapper。
 
 	package com.gxws.service.demo.mapper;
 
 	import com.gxws.service.demo.tb.DemoTb;
-	import com.gxws.tool.mybaits.mapper.Mapper;
+	import com.gxws.tool.mybatis.mapper.Mapper;
 	
 	public interface DemoTbMapper extends Mapper<DemoTb> {
 	
@@ -101,9 +101,9 @@ mapper接口继承com.gxws.tool.mybaits.mapper.Mapper。
 			</aop:aspect>
 		</aop:config>
 		<!-- 生成数据库主键id值的aop bean -->
-		<bean id="idAspect" class="com.gxws.tool.mybaits.aspect.IdAspect" />
+		<bean id="idAspect" class="com.gxws.tool.mybatis.aspect.IdAspect" />
 		<!-- 生成各种编号noid值的aop -->
-		<bean id="noidAspect" class="com.gxws.tool.mybaits.aspect.NoidAspect" />
+		<bean id="noidAspect" class="com.gxws.tool.mybatis.aspect.NoidAspect" />
 	</beans>
 
 在包com.gxws.service.demo.mapper以内所有类，方法名以insert开始的方法，在执行时会自动添加id和noid的值。

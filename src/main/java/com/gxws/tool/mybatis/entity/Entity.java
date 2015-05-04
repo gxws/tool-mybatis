@@ -62,7 +62,7 @@ public class Entity {
 			if (type instanceof ParameterizedType) {
 				ParameterizedType pt = (ParameterizedType) type;
 				superMapClass = (Class<?>) pt.getRawType();
-				if ("com.gxws.tool.mybaits.mapper.Mapper".equals(superMapClass
+				if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superMapClass
 						.getName())) {
 					this.setSubMapper(true);
 					this.setEntityClass(pt);
