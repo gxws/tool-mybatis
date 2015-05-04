@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.mapper;
+package com.gxws.tool.mybatis.mapper;
 
 import static org.apache.ibatis.jdbc.SqlBuilder.*;
 
@@ -20,8 +20,8 @@ import org.apache.ibatis.scripting.xmltags.SqlNode;
 import org.apache.ibatis.scripting.xmltags.StaticTextSqlNode;
 import org.apache.ibatis.scripting.xmltags.TrimSqlNode;
 
-import com.gxws.tool.mybaits.entity.Entity;
-import com.gxws.tool.mybaits.entity.PkField;
+import com.gxws.tool.mybatis.entity.Entity;
+import com.gxws.tool.mybatis.entity.PkField;
 
 /**
  * @author zhuwl120820@gxwsxx.com 2015年2月2日下午11:00:04

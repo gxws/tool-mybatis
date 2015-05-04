@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.aspect;
+package com.gxws.tool.mybatis.aspect;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

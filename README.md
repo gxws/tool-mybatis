@@ -12,13 +12,14 @@ mybatis工具提供通用增删改查方法。<br>
 ## 1.0
 ### 1.0.3
 完善了说明文档README.md。<br>
-调整了项目依赖，top-config-project升级为1.0.3-SNAPSHOT。<br>
-修改了获取noid的键名，旧的结构为"表名"，新的结构为"数据库名"."表名"。<br>
+调整项目依赖，top-config-project升级为1.0.3-SNAPSHOT。<br>
+修改获取noid的键名，旧的结构为"表名"，新的结构为"数据库名"."表名"。<br>
 添加测试依赖，mariadb-java-client。<br>
 添加测试依赖，slf4j-log4j12。<br>
 添加测试依赖，apache-log4j-extras。<br>
-添加了junit测试用例。<br>
-修复了updateNotNull没有","分隔符的bug。
+添加junit测试用例。<br>
+修复updateNotNull没有","分隔符的bug。<br>
+修复语法错误baits为batis。
 
 功能点
 ---

@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.entity;
+package com.gxws.tool.mybatis.entity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;

@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.aspect;
+package com.gxws.tool.mybatis.aspect;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gxws.tool.common.uuid.Uuid;
-import com.gxws.tool.mybaits.entity.PkField;
+import com.gxws.tool.mybatis.entity.PkField;
 
 /**
  * 设置主键的值

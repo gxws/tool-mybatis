@@ -16,7 +16,7 @@
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="com.gxws.tool.mybaits.plugin.MapperPlugin"></plugin>
+		<plugin interceptor="com.gxws.tool.mybatis.plugin.MapperPlugin"></plugin>
 	</plugins>
 
 	<environments default="development">
@@ -35,6 +35,6 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="com/gxws/tool/mybaits/test/mapper/TestTbMapper.xml" />
+		<mapper resource="com/gxws/tool/mybatis/test/mapper/TestTbMapper.xml" />
 	</mappers>
 </configuration>

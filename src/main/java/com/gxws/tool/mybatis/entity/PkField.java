@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.entity;
+package com.gxws.tool.mybatis.entity;
 
 /**
  * 需要处理的主键信息

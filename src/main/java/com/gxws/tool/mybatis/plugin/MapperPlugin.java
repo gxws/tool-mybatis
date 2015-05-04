@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.plugin;
+package com.gxws.tool.mybatis.plugin;
 
 import java.util.Properties;
 
@@ -12,7 +12,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-import com.gxws.tool.mybaits.mapper.MapperProvider;
+import com.gxws.tool.mybatis.mapper.MapperProvider;
 
 /**
  * mybatis plugin，实现泛型增删改查的方法<br>

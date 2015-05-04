@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.mapper;
+package com.gxws.tool.mybatis.mapper;
 
 import static org.junit.Assert.*;
 
@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.gxws.tool.mybaits.test.mapper.TestTbMapper;
+import com.gxws.tool.mybatis.test.mapper.TestTbMapper;
 import com.gxws.tool.mybatis.test.tb.TestTb;
 
 /**

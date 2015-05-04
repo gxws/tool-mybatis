@@ -1,4 +1,4 @@
-package com.gxws.tool.mybaits.mapper;
+package com.gxws.tool.mybatis.mapper;
 
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
