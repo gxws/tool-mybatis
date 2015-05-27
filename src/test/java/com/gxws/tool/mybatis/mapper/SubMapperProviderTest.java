@@ -12,15 +12,14 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.gxws.tool.mybatis.test.mapper.TestTbMapper;
 import com.gxws.tool.mybatis.test.mapper.TestTbSubMapper;
 import com.gxws.tool.mybatis.test.tb.TestTb;
 
 /**
  * @author zhuwl120820@gxwsxx.com
- *
+ * @since
  */
-public class MapperProviderTest {
+public class SubMapperProviderTest {
 
 	private SqlSessionFactory sqlSessionFactory;
 
@@ -49,7 +48,7 @@ public class MapperProviderTest {
 
 	@Test
 	public void testInsert() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		TestTb tb = new TestTb();
 		tb.setId("1");
 		tb.setName("name1 insert");
@@ -58,7 +57,7 @@ public class MapperProviderTest {
 
 	@Test
 	public void testInsertNotNull() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		TestTb tb = new TestTb();
 		tb.setId("2");
 		tb.setName("name2 insert not null");
@@ -67,13 +66,13 @@ public class MapperProviderTest {
 
 	@Test
 	public void testSelect() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		Assert.assertEquals("name3", mapper.select("3").getName());
 	}
 
 	@Test
 	public void testUpdate() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		TestTb tb = new TestTb();
 		tb.setId("4");
 		tb.setName("name4 update");
@@ -84,7 +83,7 @@ public class MapperProviderTest {
 
 	@Test
 	public void testUpdateNotNull() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		TestTb tb = new TestTb();
 		tb.setId("5");
 		tb.setName("name5 update not null");
@@ -96,8 +95,7 @@ public class MapperProviderTest {
 
 	@Test
 	public void testDelete() {
-		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		TestTbSubMapper mapper = session.getMapper(TestTbSubMapper.class);
 		Assert.assertEquals(1, mapper.delete("6"));
 	}
-
 }

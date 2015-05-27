@@ -24,9 +24,10 @@ import com.gxws.tool.mybatis.entity.Entity;
 import com.gxws.tool.mybatis.entity.PkField;
 
 /**
- * @author zhuwl120820@gxwsxx.com 2015年2月2日下午11:00:04
- *
- *         mapper接口的实际实现类
+ * com.gxws.tool.mybatis.mapper.Mapper接口的实际实现类
+ * 
+ * @author zhuwl120820@gxwsxx.com
+ * @since 1.0
  */
 public class MapperProvider {
 
@@ -38,6 +39,9 @@ public class MapperProvider {
 
 	/**
 	 * 初始化所有参数
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @since 1.0
 	 */
 	public MapperProvider() {
 		Class<? extends MapperProvider> clz = this.getClass();
@@ -52,6 +56,7 @@ public class MapperProvider {
 	 * 
 	 * @author zhuwl120820@gxwsxx.com
 	 * @return 返回没有实际意义的sql语句
+	 * @since 1.0
 	 */
 	public String fakeSQL() {
 		return "fakeSQL";
@@ -64,6 +69,7 @@ public class MapperProvider {
 	 * 
 	 * @param ms
 	 *            需要处理的sql语句中的mybatis plugin对象
+	 * @since 1.0
 	 */
 	public void handle(MappedStatement ms) {
 		Entity en = getEntity(ms.getId());
@@ -93,7 +99,7 @@ public class MapperProvider {
 	 *            内置参数名，一般是"type"或"sqlSource"
 	 * @param value
 	 *            内置参数值，一般是class对象或sqlSource对象
-	 * 
+	 * @since 1.0
 	 */
 	private void resetValue(Object obj, String name, Object value) {
 		MetaObject mo = MetaObject.forObject(obj, new DefaultObjectFactory(),
@@ -108,6 +114,7 @@ public class MapperProvider {
 	 * 
 	 * @param methodFullName
 	 * @return 参数对象
+	 * @since 1.0
 	 */
 	private Entity getEntity(String methodFullName) {
 		Entity en = enMap.get(methodFullName);

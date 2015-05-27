@@ -21,6 +21,10 @@ mybatis工具提供通用增删改查方法。<br>
 修复updateNotNull没有","分隔符的bug。<br>
 修复语法错误baits为batis。
 
+### 1.1.0
+修复多层集成自com.gxws.tool.mybatis.mapper.Mapper接口不能调用实现方法的bug。<br>
+去除了原有的parent依赖。<br>
+
 功能点
 ---
 ### 1、提供通用的、泛型的增删改查方法

@@ -36,5 +36,6 @@
 
 	<mappers>
 		<mapper resource="TestTbMapper.xml" />
+		<mapper resource="TestTbSubMapper.xml" />
 	</mappers>
 </configuration>

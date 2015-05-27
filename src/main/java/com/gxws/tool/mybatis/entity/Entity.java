@@ -9,8 +9,7 @@ import java.util.Set;
 /**
  * 需要处理的泛型实体类信息
  * 
- * @author zhuwl120820@gxwsxx.com
- *  2015年2月3日下午2:44:40
+ * @author zhuwl120820@gxwsxx.com 2015年2月3日下午2:44:40
  *
  */
 public class Entity {
@@ -56,23 +55,53 @@ public class Entity {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		Type[] types = this.mapperClass.getGenericInterfaces();
-		Class<?> superMapClass = null;
+		// Type[] types = this.mapperClass.getGenericInterfaces();
+		// Class<?> superMapClass = null;
+		// for (Type type : types) {
+		// if (type instanceof ParameterizedType) {
+		// ParameterizedType pt = (ParameterizedType) type;
+		// superMapClass = (Class<?>) pt.getRawType();
+		// if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superMapClass
+		// .getName())) {
+		// this.setSubMapper(true);
+		// this.setEntityClass(pt);
+		// this.setEntityClassName();
+		// this.setDbTableName();
+		// this.setFieldAndColumn();
+		// break;
+		// }
+		// }
+		// }
+		ParameterizedType pt = superMapper(this.mapperClass
+				.getGenericInterfaces());
+		if (null != pt) {
+			this.setSubMapper(true);
+			this.setEntityClass(pt);
+			this.setEntityClassName();
+			this.setDbTableName();
+			this.setFieldAndColumn();
+		}
+	}
+
+	private ParameterizedType superMapper(Type[] types) {
+		Class<?> superClass = null;
+		ParameterizedType pt = null;
 		for (Type type : types) {
 			if (type instanceof ParameterizedType) {
-				ParameterizedType pt = (ParameterizedType) type;
-				superMapClass = (Class<?>) pt.getRawType();
-				if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superMapClass
+				pt = (ParameterizedType) type;
+				superClass = (Class<?>) pt.getRawType();
+				if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superClass
 						.getName())) {
-					this.setSubMapper(true);
-					this.setEntityClass(pt);
-					this.setEntityClassName();
-					this.setDbTableName();
-					this.setFieldAndColumn();
-					break;
+					return pt;
 				}
 			}
+			superClass = (Class<?>) type;
+			pt = superMapper(superClass.getGenericInterfaces());
+			if (null != pt) {
+				return pt;
+			}
 		}
+		return null;
 	}
 
 	public boolean isSubMapper() {
@@ -103,34 +132,34 @@ public class Entity {
 		return mapperClass;
 	}
 
-	private final void setDbTableName() {
+	private void setDbTableName() {
 		this.dbTableName = underline(this.getEntityClass().getSimpleName());
 	}
 
-	private final void setEntityClass(ParameterizedType pt) {
+	private void setEntityClass(ParameterizedType pt) {
 		this.entityClass = (Class<?>) pt.getActualTypeArguments()[0];
 	}
 
-	private final void setEntityClassName() {
+	private void setEntityClassName() {
 		this.entityClassName = this.entityClass.getName();
 	}
 
-	private final void setMapperMethodName(String mapperMethodName) {
+	private void setMapperMethodName(String mapperMethodName) {
 		this.mapperMethodName = mapperMethodName.substring(mapperMethodName
 				.lastIndexOf(".") + 1);
 	}
 
-	private final void setMapperClassName(String mapperClassName) {
+	private void setMapperClassName(String mapperClassName) {
 		this.mapperClassName = mapperClassName.substring(0,
 				mapperClassName.lastIndexOf("."));
 	}
 
-	private final void setMapperClass() throws ClassNotFoundException {
+	private void setMapperClass() throws ClassNotFoundException {
 		this.mapperClass = Class.forName(this.mapperClassName, false, this
 				.getClass().getClassLoader());
 	}
 
-	private final void setSubMapper(boolean subMapper) {
+	private void setSubMapper(boolean subMapper) {
 		this.subMapper = subMapper;
 	}
 
@@ -176,11 +205,11 @@ public class Entity {
 
 	}
 
-	public final String getDbColumnNameString() {
+	public String getDbColumnNameString() {
 		return dbColumnNameString;
 	}
 
-	public final Set<String> getEntityFieldSet() {
+	public Set<String> getEntityFieldSet() {
 		return entityFieldSet;
 	}
 }
