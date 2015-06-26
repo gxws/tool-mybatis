@@ -111,3 +111,4 @@ mapper接口继承com.gxws.tool.mybatis.mapper.Mapper。
 	</beans>
 
 在包com.gxws.service.demo.mapper以内所有类，方法名以insert开始的方法，在执行时会自动添加id和noid的值。
+
