@@ -8,8 +8,6 @@ mybatis工具提供通用增删改查方法。<br>
 
 版本变更说明
 ---
-# 1
-## 1.0
 ### 1.0.3
 完善了说明文档README.md。<br>
 调整项目依赖，top-config-project升级为1.0.3-SNAPSHOT。<br>
@@ -24,6 +22,9 @@ mybatis工具提供通用增删改查方法。<br>
 ### 1.1.0
 修复多层集成自com.gxws.tool.mybatis.mapper.Mapper接口不能调用实现方法的bug。<br>
 去除了原有的parent依赖。<br>
+升级mybatis版本为3.3.0。<br>
+引入slf4j为日志输出接口。<br>
+
 
 功能点
 ---

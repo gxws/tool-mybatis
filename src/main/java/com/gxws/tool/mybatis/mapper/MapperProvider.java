@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
@@ -19,6 +20,8 @@ import org.apache.ibatis.scripting.xmltags.MixedSqlNode;
 import org.apache.ibatis.scripting.xmltags.SqlNode;
 import org.apache.ibatis.scripting.xmltags.StaticTextSqlNode;
 import org.apache.ibatis.scripting.xmltags.TrimSqlNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gxws.tool.mybatis.entity.Entity;
 import com.gxws.tool.mybatis.entity.PkField;
@@ -30,6 +33,8 @@ import com.gxws.tool.mybatis.entity.PkField;
  * @since 1.0
  */
 public class MapperProvider {
+
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	private static Map<String, Method> providerMethodMap = new HashMap<>();
 
@@ -77,6 +82,7 @@ public class MapperProvider {
 			return;
 		}
 		if (!providerMethodMap.containsKey(en.getMapperMethodName())) {
+			log.debug("方法名：" + en.getMapperMethodName() + "不是通用方法");
 			return;
 		}
 		Method method = providerMethodMap.get(en.getMapperMethodName());
@@ -103,7 +109,7 @@ public class MapperProvider {
 	 */
 	private void resetValue(Object obj, String name, Object value) {
 		MetaObject mo = MetaObject.forObject(obj, new DefaultObjectFactory(),
-				new DefaultObjectWrapperFactory());
+				new DefaultObjectWrapperFactory(),new DefaultReflectorFactory());
 		mo.setValue(name, value);
 	}
 

@@ -6,6 +6,9 @@ import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 需要处理的泛型实体类信息
  * 
@@ -13,6 +16,8 @@ import java.util.Set;
  *
  */
 public class Entity {
+
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	// 实体类对象类名（包名+类名）
 	private String entityClassName;
@@ -47,6 +52,8 @@ public class Entity {
 	// 是否调用通用方法
 	private boolean subMapper;
 
+	private final String MAPPER_NAME = "com.gxws.tool.mybatis.mapper.Mapper";
+
 	public Entity(String methodFullName) {
 		this.setMapperMethodName(methodFullName);
 		this.setMapperClassName(methodFullName);
@@ -55,23 +62,6 @@ public class Entity {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		// Type[] types = this.mapperClass.getGenericInterfaces();
-		// Class<?> superMapClass = null;
-		// for (Type type : types) {
-		// if (type instanceof ParameterizedType) {
-		// ParameterizedType pt = (ParameterizedType) type;
-		// superMapClass = (Class<?>) pt.getRawType();
-		// if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superMapClass
-		// .getName())) {
-		// this.setSubMapper(true);
-		// this.setEntityClass(pt);
-		// this.setEntityClassName();
-		// this.setDbTableName();
-		// this.setFieldAndColumn();
-		// break;
-		// }
-		// }
-		// }
 		ParameterizedType pt = superMapper(this.mapperClass
 				.getGenericInterfaces());
 		if (null != pt) {
@@ -90,8 +80,9 @@ public class Entity {
 			if (type instanceof ParameterizedType) {
 				pt = (ParameterizedType) type;
 				superClass = (Class<?>) pt.getRawType();
-				if ("com.gxws.tool.mybatis.mapper.Mapper".equals(superClass
-						.getName())) {
+				if (MAPPER_NAME.equals(superClass.getName())) {
+					log.debug(this.getMapperClassName() + "是" + MAPPER_NAME
+							+ "的子类");
 					return pt;
 				}
 			}
@@ -101,6 +92,7 @@ public class Entity {
 				return pt;
 			}
 		}
+		log.debug(this.getMapperClassName() + "不是" + MAPPER_NAME + "的子类");
 		return null;
 	}
 
