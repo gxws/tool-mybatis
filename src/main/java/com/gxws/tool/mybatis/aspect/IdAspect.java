@@ -32,22 +32,36 @@ public class IdAspect {
 	public void before(JoinPoint jp) {
 		Object entity = jp.getArgs()[0];
 		String fieldName = pk.getEntityField();
-		StringBuffer methodNameSetter = new StringBuffer("set");
-		methodNameSetter.append(fieldName.substring(0, 1).toUpperCase());
-		methodNameSetter.append(fieldName.substring(1));
+
+		StringBuffer methodNameGetter = new StringBuffer("get");
+		methodNameGetter.append(fieldName.substring(0, 1).toUpperCase());
+		methodNameGetter.append(fieldName.substring(1));
+
+		StringBuffer methodNameSetter = new StringBuffer("s");
+		methodNameSetter.append(methodNameGetter.substring(1));
 		Method method = null;
 		try {
 			try {
 				method = entity.getClass().getMethod(
-						methodNameSetter.toString(), String.class);
+						methodNameGetter.toString());
 			} catch (NoSuchMethodException e1) {
-				log.debug("没有id属性");
+				log.debug("没有" + methodNameGetter.toString() + "方法");
 				return;
 			}
+			Object o = method.invoke(entity);
+			if (null != o) {
+				return;
+			}
+			try {
+				method = entity.getClass().getMethod(
+						methodNameSetter.toString(), String.class);
+			} catch (NoSuchMethodException e) {
+				log.debug("没有" + methodNameSetter.toString() + "方法");
+			}
 			method.invoke(entity, Uuid.order());
-		} catch (SecurityException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException e) {
-			log.error("主键值修改错误", e);
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException | SecurityException e2) {
+			log.error("操作主键值错误", e2);
 		}
 	}
 }
