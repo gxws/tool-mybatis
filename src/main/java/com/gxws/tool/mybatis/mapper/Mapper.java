@@ -87,4 +87,13 @@ public interface Mapper<T> {
 	 */
 	@DeleteProvider(method = "fakeSQL", type = MapperProvider.class)
 	public int delete(String id);
+
+	/**
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @return 记录数
+	 * @since
+	 */
+	@SelectProvider(method = "fakeSQL", type = MapperProvider.class)
+	public long count();
 }

@@ -55,7 +55,7 @@ public class MapperProviderTest {
 		TestTb tb = new TestTb();
 		tb.setId("1");
 		tb.setName("name1 insert");
-		Assert.assertEquals(1, mapper.insert(tb));
+		Assert.assertEquals(mapper.insert(tb), 1);
 	}
 
 	@Test(groups = { "supMapper" })
@@ -64,13 +64,13 @@ public class MapperProviderTest {
 		TestTb tb = new TestTb();
 		tb.setId("2");
 		tb.setName("name2 insert not null");
-		Assert.assertEquals(1, mapper.insertNotNull(tb));
+		Assert.assertEquals(mapper.insertNotNull(tb), 1);
 	}
 
 	@Test(groups = { "supMapper" })
 	public void testSelect() {
 		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
-		Assert.assertEquals("name3", mapper.select("3").getName());
+		Assert.assertEquals(mapper.select("3").getName(), "name3");
 	}
 
 	@Test(groups = { "supMapper" })
@@ -81,7 +81,7 @@ public class MapperProviderTest {
 		tb.setName("name4 update");
 		tb.setTimestampName(new Date());
 		tb.setDatetimeName(new Date());
-		Assert.assertEquals(1, mapper.update(tb));
+		Assert.assertEquals(mapper.update(tb), 1);
 	}
 
 	@Test(groups = { "supMapper" })
@@ -93,13 +93,18 @@ public class MapperProviderTest {
 		tb.setStringName("stringName update not null");
 		tb.setTimestampName(new Date());
 		tb.setDatetimeName(new Date());
-		Assert.assertEquals(1, mapper.updateNotNull(tb));
+		Assert.assertEquals(mapper.updateNotNull(tb), 1);
 	}
 
 	@Test(groups = { "supMapper" })
 	public void testDelete() {
 		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
-		Assert.assertEquals(1, mapper.delete("6"));
+		Assert.assertEquals(mapper.delete("6"), 1);
 	}
 
+	@Test(groups = { "supMapper" })
+	public void testCount() {
+		TestTbMapper mapper = session.getMapper(TestTbMapper.class);
+		Assert.assertEquals(mapper.count(), 4);
+	}
 }

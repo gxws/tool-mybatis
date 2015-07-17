@@ -109,7 +109,8 @@ public class MapperProvider {
 	 */
 	private void resetValue(Object obj, String name, Object value) {
 		MetaObject mo = MetaObject.forObject(obj, new DefaultObjectFactory(),
-				new DefaultObjectWrapperFactory(),new DefaultReflectorFactory());
+				new DefaultObjectWrapperFactory(),
+				new DefaultReflectorFactory());
 		mo.setValue(name, value);
 	}
 
@@ -239,5 +240,17 @@ public class MapperProvider {
 		DynamicSqlSource sqlSource = new DynamicSqlSource(
 				ms.getConfiguration(), new MixedSqlNode(nodes));
 		resetValue(ms, "sqlSource", sqlSource);
+	}
+
+	public void count(MappedStatement ms, Entity en) {
+		List<SqlNode> nodes = new ArrayList<>();
+		BEGIN();
+		SELECT("count(" + pk.getDbColumnName() + ")");
+		FROM(en.getDbTableName());
+		nodes.add(new StaticTextSqlNode(SQL()));
+		DynamicSqlSource sqlSource = new DynamicSqlSource(
+				ms.getConfiguration(), new MixedSqlNode(nodes));
+		resetValue(ms, "sqlSource", sqlSource);
+		resetValue(ms.getResultMaps().get(0), "type", long.class);
 	}
 }
