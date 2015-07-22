@@ -52,7 +52,7 @@ public class Entity {
 	// 是否调用通用方法
 	private boolean subMapper;
 
-	private final String MAPPER_NAME = "com.gxws.tool.mybatis.mapper.Mapper";
+	private final static String MAPPER_NAME = "com.gxws.tool.mybatis.mapper.Mapper";
 
 	public Entity(String methodFullName) {
 		this.setMapperMethodName(methodFullName);
@@ -163,7 +163,7 @@ public class Entity {
 		Field[] fields = this.entityClass.getDeclaredFields();
 		this.entityFieldSet = new HashSet<>();
 		this.dbColumnNameSet = new HashSet<>();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (Field field : fields) {
 			this.entityFieldSet.add(field.getName());
 			this.dbColumnNameSet.add(underline(field.getName()));
@@ -180,7 +180,7 @@ public class Entity {
 
 	public static String underline(String uplow) {
 		char[] uplowChar = uplow.toCharArray();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < uplowChar.length; i++) {
 			if (Character.isUpperCase(uplowChar[i])) {
 				sb.append("_");
